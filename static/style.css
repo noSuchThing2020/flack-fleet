@@ -232,6 +232,7 @@ body {
     padding: 10px;
     position: fixed;
     width: 100%;
+    top: 50px;
 }
 
 @media screen and (max-height: 450px) {
@@ -247,6 +248,8 @@ body {
 #topNav {
     margin-bottom: 0;
     background-color: ghostwhite !important;
+    position: fixed;
+    width: 100%;
 }
 
 .fa-user {
@@ -364,3 +367,6 @@ label[for="myFile"] {
     width: inherit;
 }
 
+input {
+    font-size: 20px !important;
+}

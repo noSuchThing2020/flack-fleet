@@ -161,3 +161,6 @@ def send_image(data):
         channelMessages.pop(0)
     messages[room] = channelMessages
     send({"imageSrc": imageSrc, "sendUser": sendUser, "timeStamp": timeStamp}, room=room)
+
+if __name__ == '__main__':
+	socketio.run(app)
