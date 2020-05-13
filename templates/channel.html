@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    channel
+{% endblock %}
+
+{% block sections %}
+<div id="nameBlock" class="container">
+    <h3>Welcome to Flack-Fleet</h3>
+    <h5 class="pickName">Plese pick a display name to continue</h5>
+    <input type="text" name="displayName" id="displayName">
+    <button id="addName">Confirm</button>
+</div>
+<div id="blocker"></div>
+<nav class="navbar navbar-expand-md navbar-light bg-light border book-hub-nav">
+    <a href="/" class="header"><img class="logo-img" src="/static/logo.png"></a>
+    <button id="userName"></button>
+    <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar">
+            <h4>Channels</h4>
+            <div class="navbar-nav ml-auto mt-2">
+                {% for channel in channels %}
+                <!-- <li class="nav-item">#<a class="nav-link join-channel" href="/{{chaneel}}">{{ channel|title }}</a></li> -->
+                #<a class="join-channel" href="/channels/{{channel}}">{{ channel|title }}</a>
+                {% endfor %}
+            </div>
+    </div>
+</nav>
+<div id="messages">
+    {% for message in messages %}
+        {% if message.sendUser in usedNames%}
+            <div class="end message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><p>{{message.myText}}</p></div>
+        {% else %}
+            <div class="start message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><p>{{message.myText}}</p></div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+<form action="" class="send-form">
+    <div class="form-group">
+        <input class="form-control" name="message" placeholder="message" type="message" id="message">
+        <button class="btn btn-primary" type="submit" id="send-btn">Send</button>
+    </div>
+</form>
+{% endblock %}

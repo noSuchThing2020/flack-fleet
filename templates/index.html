@@ -1,0 +1,124 @@
+<head>
+    <!-- Required meta tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Search, review and share books">
+    <meta name="keywords" content="books, review, comment">
+    <meta name="author" content="Project1">
+
+    <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Included font awesome icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+    <link href="/static/favicon.ico" rel="icon">
+
+    <link href="/static/style.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <!--  rating plugin -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/static/main.js" type="text/javascript" charset="utf-8"></script>
+    <title>Flack-Fleet: {% block title %}{% endblock %}</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" charset="UTF-8"></script>
+
+    <!-- Emoji plugin  https://emoji-button.js.org/ -->
+    <script src="https://cdn.jsdelivr.net/npm/@joeattardi/emoji-button@3.0.3/dist/index.min.js"></script>
+</head>
+
+<body class="container">
+    <div id="nameBlock" class="container">
+        <h3>Welcome to Flack-Fleet!</h3>
+        <h5 class="pickName">Plese pick a display name to continue</h5>
+        <p class="create-name">
+            <input type="text" name="displayName" id="displayName" class="form-control">
+            <button id="addName" class="btn btn-primary">Confirm</button>
+        </p>
+        <p class="alert-warning alert none" id="nameExists">Name already exists!</p>
+        <button class="btn close-modal" id="close-modal"><i class="fa fa-close"></i></button>
+    </div>
+    <div id="blocker"></div>
+    <div id="container">
+    <nav class="navbar navbar-expand-md navbar-light bg-light border" id="topNav">
+        <p class="profile">  
+            <i class='far fa-user'></i>
+            <button id="userName"></button>
+        </p>
+        <a href="/" class="header"><img class="logo-img" src="/static/logo.png"></a>
+        <button id="toggleButton"  class="navbar-toggler"  type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </nav>
+    <div class="" id="mySidenav">
+        <h2 class="channel-heading">Public Channels</h2>
+        <div class="public-channel">
+            <form action="/create" method="post" id="add-channel">
+                <div class="form-group">
+                    <input class="form-control new-channel-input" name="channel" placeholder="New channel" type="text">
+                    <button class="btn btn-primary add-channel" type="submit">Create</button>
+                </div>
+                {% if warningMessage %}
+                <p class="alert alert-warning" role="alert">{{ warningMessage }}</p>
+                {% endif %}
+            </form>
+            <ul class="navbar-nav mr-auto mt-2 channels">
+                {% for channel in channels %}
+                    {% if currentChannel == channel %}
+                        <li class="active-channel"># <a class="join-channel" href="/channels/{{channel}}">{{ channel|title }}</a></li>
+                    {% else %}
+                        <li># <a class="join-channel" href="/channels/{{channel}}">{{ channel|title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div id="main">
+        <div id="messages">
+            {% for message in messages %}
+                {% if message.imageSrc %}
+                    {% if message.sendUser in usedNames%}
+                        <div class="end message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><img src="{{message.imageSrc}}"></img></div>
+                    {% else %}
+                        <div class="start message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><img src="{{message.imageSrc}}"></img></div>
+                    {% endif %}
+                {% else %}
+                    {% if message.sendUser in usedNames%}
+                    <div class="end message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><p>{{message.myText}}</p></div>
+                    {% else %}
+                    <div class="start message"><p><span class="displayName">{{message.sendUser}}</span><span class="timeStamp">{{message.timeStamp}}</span></p><p>{{message.myText}}</p></div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="none" id="preview-div">
+            <div class="preview">
+                <img src="" alt="Preview" id="output" class="none">
+            </div>
+            
+            <div class="choose-file">
+                <p> You can send JPG, GIF, PNG, JEPG files with maximum size of 6MB</p>
+                <label for="myFile">
+                    <input type="file" id="myFile" accept="image/*">
+                </label>
+                
+                <button class="btn btn-primary" type="submit" id="send-img">Send Img</button>
+            </div>
+        </div>
+        <form action="" class="send-form">
+            <div class="form-group">
+                <p id="emoji-button"><i class='far fa-grin'></i></p>
+                <label  class="myFile-label"><i class="fa fa-paperclip"></i> </label>
+                <input class="form-control" name="message" placeholder="message" type="message" id="message">
+                <button class="btn btn-primary" type="submit" id="send-btn">Send</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>

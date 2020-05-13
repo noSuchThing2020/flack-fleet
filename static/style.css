@@ -1,0 +1,366 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: xx-large;
+}
+
+.book-hub-nav {
+    margin-bottom: 0 !important;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+#messages {
+    height: 80%;
+    overflow-y: scroll;
+}
+.send-form {
+    position: relative;
+    width: 100%;
+}
+
+.send-form button {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.justify-content-end {
+    -ms-flex-pack: end!important;
+    justify-content: flex-end!important;
+}
+
+.logo-img {
+    width: 90px;
+}
+
+#nameBlock {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.close-modal {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    background: #fff;
+    font-size: 25px !important;
+}
+
+.navbar:before,
+.navbar:after {
+    display: none !important ;
+}
+
+#blocker {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: grey;
+    opacity: 0.6;
+    z-index: 100;
+}
+
+.message {
+    display: flex;
+    word-break: break-all;
+}
+
+.message.end {
+    background: lightblue;
+    border: 1px solid lightblue;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+    float: right;
+}
+
+.message.start {
+    justify-content: flex-start;
+    background: lightgray;
+    border: 1px solid lightgray;
+    padding: 5px;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.clear:before,
+.clear:after,
+.message.start,
+.message.end {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.message p {
+    margin-bottom: 3px;
+}
+
+.message {
+    margin-bottom: 10px;
+}
+
+#messages {
+    padding: 10px;
+}
+
+#messages p.clear {
+    color: darkgreen
+}
+
+.displayName {
+    font-weight: 600;
+}
+
+#displayName {
+    margin-bottom: 15px;
+}
+
+.create-name {
+    position: relative;
+}
+
+#addName {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.timeStamp {
+    font-size: 11px;
+    color: grey;
+    display: inline-block;
+    padding-left: 5px;
+}
+
+.warning-message {
+    clear: both;
+    display: block;
+}
+
+.add-channel {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+#add-channel {
+    position: relative;
+    margin-bottom: 0;
+    padding: 5px 10px;
+}
+
+.channels {
+    margin: 0 !important;
+}
+
+/* Push nav bar */
+#mySidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+#mySidenav > h2 {
+    padding-left: 10px;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+#mySidenav a {
+    padding: 8px 8px 8px 0;
+    text-decoration: none;
+    font-size: 18px;
+    color: #ffffff;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+#mySidenav a:hover {
+    color: #111;
+}
+
+#mySidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: all 0.4s linear 0s;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+#container {
+    width: 100%;
+    overflow: hidden;
+}
+
+#topNav {
+    margin-bottom: 0;
+    background-color: ghostwhite !important;
+}
+
+.fa-user {
+    font-size: 25px;
+    position: relative;
+    top: 5px;
+    color: dimgrey;
+}
+
+#userName {
+    text-decoration: underline;
+    background: none;
+    border: none;
+}
+
+.profile {
+    margin: 0;
+}
+
+.channels li {
+    color: #fff;
+    padding-left: 20px;
+    font-size: 25px;
+}
+
+.active-channel a {
+    text-decoration: underline !important;
+    color: #333 !important;
+}
+
+.active-channel {
+    color: #333 !important;
+}
+
+.warning {
+    color: orange;
+}
+
+.none {
+    display: none !important;
+}
+
+#emoji-button {
+    position: absolute;
+    left: 0;
+    height: 35px;
+    margin: 0;
+    padding-left: 5px;
+}
+
+.fa-grin {
+    font-size: 25px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 5px;
+    border-right: 1px solid #999;
+}
+
+
+/** Upload image **/
+#message {
+    padding-left: 65px;
+    padding-right: 60px;
+}
+
+#messages img {
+    max-width: 200px;
+}
+
+.myFile-label {
+    position: absolute;
+    left: 40px;
+    font-size: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#preview-div {
+    position: absolute;
+    bottom: 0;
+    background-color: lightblue;
+    width: 100%;
+    left: 0;
+    flex-wrap: nowrap;
+    display: flex;
+}
+
+.preview,
+.choose-file {
+    display: inline-block;
+    width: 50%;
+    flex-wrap: nowrap;
+    padding: 10px;
+}
+
+.preview {
+    border: 1px solid #fff;
+    min-height: 100px;
+}
+
+.preview img {
+    width: 100%;
+}
+
+.choose-file > p {
+    color: #fff;
+}
+
+label[for="myFile"] {
+    width: 100%;
+}
+
+#myFile {
+    width: inherit;
+}
+
