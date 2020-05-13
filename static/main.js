@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Creat Web socket connection
     var URL  = location.protocol + '//' + document.domain + ':' + location.port;
     //io.set('transports', ['websocket']);
-    var socket = io.connect(URL);
+    //var socket = io.connect(URL);
     // var socket = io(URL,{
     //     transports: ['websocket']
     // })
-    //var socket = io('wss://127.0.0.1:5000/', {transports: ['websocket']});
+    var socket = io(URL, {transports: ['websocket']});
     console.log(URL);
     console.log(socket);
     

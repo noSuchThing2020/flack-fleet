@@ -317,7 +317,7 @@ body {
 }
 
 #messages img {
-    max-width: 200px;
+    max-width: 100%;
 }
 
 .myFile-label {
