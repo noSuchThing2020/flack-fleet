@@ -21,6 +21,11 @@ CS50 Web Programming with Python and JavaScript
 * Ingegrated emoji library
 * Users can change their display name as long as no one else is using it
 
+##### TODOs
+* Send and preview videos
+* Delete and forward messages 
+* sound effect while sending/ receiving message
+
 ## Setup 
 
 ##### Clone repo
